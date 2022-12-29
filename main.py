@@ -224,11 +224,13 @@ def main():
             threshold = 1 / 0.062295051731419034
 
         # Set the beta and gamma values slightly above and below the threshold
-        beta_above = 1.1 * threshold
-        gamma_above = threshold
+        value_above_t = threshold * 1.01
+        gamma_above = threshold / value_above_t
+        beta_above = value_above_t
 
-        beta_below = 0.9 * threshold
-        gamma_below = threshold
+        value_below_t = threshold * 0.98
+        gamma_below = threshold / value_below_t
+        beta_below = value_below_t
 
         # Set the initial infected nodes
         infected_nodes = set_initial_infected(G, p0)
@@ -246,9 +248,7 @@ def main():
         # Print the leading nodes and proportion infected for each simulation
         print("Graph type:", graph_type)
         print("Threshold:", threshold)
-        print("Proportion infected above threshold:", proportion_infected_above[-1])
         check_threshold(beta_above, gamma_above, max_eigen_above)
-        print("Proportion infected below threshold:", proportion_infected_below[-1])
         check_threshold(beta_below, gamma_below, max_eigen_below)
         print('##############################################')
 
