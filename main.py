@@ -225,12 +225,12 @@ def main():
 
         # Set the beta and gamma values slightly above and below the threshold
         value_above_t = threshold * 1.01
-        gamma_above = threshold / value_above_t
-        beta_above = value_above_t
+        gamma_above = (threshold / value_above_t)/100
+        beta_above = (value_above_t)/100
 
         value_below_t = threshold * 0.98
-        gamma_below = threshold / value_below_t
-        beta_below = value_below_t
+        gamma_below = (threshold / value_below_t)/100
+        beta_below = (value_below_t)/100
 
         # Set the initial infected nodes
         infected_nodes = set_initial_infected(G, p0)
